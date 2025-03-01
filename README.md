@@ -1,20 +1,8 @@
 docker compose down --volumes --remove-orphans
 
+airflow tasks test fetch_feed_dag fetch_feed_task $(date -I)
 
+airflow dags list
+airflow tasks list feed_dag
 
-  # phpredisadmin:
-  #   image: erikdubbelboer/phpredisadmin
-  #   environment:
-  #     REDIS_1_HOST: redis
-  #     REDIS_1_PORT: 6379
-  #   ports:
-  #     - "4001:80"
-  #   stdin_open: true
-  #   tty: true
-  #   restart: unless-stopped
-
-  # adminer:
-  #   image: adminer
-  #   restart: unless-stopped
-  #   ports:
-  #     - 4002:8080
+airflow tasks test feed_dag scrape_rss_feed $(date -I)
